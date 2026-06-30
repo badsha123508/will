@@ -45,7 +45,7 @@ class ToDoApp:
         return task
 
     def complete_task(self, task_id):
-        """Mark a task as completed."""
+        
         if task_id in self.tasks:
             task = self.tasks[task_id]
             if task.completed:
@@ -57,7 +57,7 @@ class ToDoApp:
             print(f"  Error: No task found with ID {task_id}.")
 
     def uncomplete_task(self, task_id):
-        """Mark a completed task as incomplete again."""
+        
         if task_id in self.tasks:
             task = self.tasks[task_id]
             if not task.completed:
@@ -69,17 +69,17 @@ class ToDoApp:
             print(f"  Error: No task found with ID {task_id}.")
 
     def delete_task(self, task_id):
-        """Delete a task by ID."""
+        
         if task_id in self.tasks:
             removed = self.tasks.pop(task_id)
             print(f"  Deleted: {removed}")
         else:
             print(f"  Error: No task found with ID {task_id}.")
 
-    # ── View helpers ──────────────────────────────────────────────────────────
+    
 
     def view_all(self):
-        """Display all tasks."""
+        
         if not self.tasks:
             print("  No tasks yet. Add one!")
             return
@@ -93,7 +93,7 @@ class ToDoApp:
         self._print_summary()
 
     def view_pending(self):
-        """Display only incomplete tasks."""
+        
         pending = [t for t in self.tasks.values() if not t.completed]
         if not pending:
             print("  No pending tasks — great job!")
@@ -107,7 +107,7 @@ class ToDoApp:
         print(f"  {'─' * 40}")
 
     def view_completed(self):
-        """Display only completed tasks."""
+        
         done = [t for t in self.tasks.values() if t.completed]
         if not done:
             print("  No completed tasks yet.")
@@ -125,12 +125,12 @@ class ToDoApp:
         done = sum(1 for t in self.tasks.values() if t.completed)
         print(f"  Summary: {done}/{total} completed")
 
-    # ── Menu & main loop ──────────────────────────────────────────────────────
+    
 
-    @staticmethod
+    
     def _print_menu():
         print("\n" + "=" * 44)
-        print("        📝  TO-DO LIST APPLICATION")
+        print("          TO-DO LIST APPLICATION")
         print("=" * 44)
         print("  1. Add a task")
         print("  2. Mark task as completed")
@@ -143,7 +143,7 @@ class ToDoApp:
         print("=" * 44)
 
     def _get_task_id(self, prompt="  Enter task ID: "):
-        """Prompt for and validate a task ID."""
+        
         try:
             return int(input(prompt))
         except ValueError:
@@ -151,7 +151,7 @@ class ToDoApp:
             return None
 
     def run(self):
-        """Main application loop."""
+        
         print("\nWelcome to the To-Do List App!")
 
         while True:
@@ -187,14 +187,14 @@ class ToDoApp:
                 self.view_completed()
 
             elif choice == "8":
-                print("\n  Goodbye! Stay productive. 👋\n")
+                print("\n  Goodbye! Stay productive. \n")
                 break
 
             else:
                 print("  Invalid choice. Please enter a number between 1 and 8.")
 
 
-# ── Entry point ───────────────────────────────────────────────────────────────
+
 
 if __name__ == "__main__":
     app = ToDoApp()
